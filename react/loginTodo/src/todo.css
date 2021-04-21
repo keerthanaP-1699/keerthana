@@ -1,0 +1,130 @@
+/* h1 {
+  text-align: center;
+}
+#todo-list {
+  width: 500px;
+  margin: 60px auto;
+}
+form, .todo {
+  border: 1px solid grey;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+form input {
+  padding: 4px 8px;
+  flex-grow: 1;
+  margin-right: 16px;
+}
+.todo {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  font-size: 16px;
+  background-color: rgb(217, 60, 35);
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: rgb(173, 47, 28);
+}
+button:active {
+  background-color: rgb(130,35,21);
+}
+button:focus {
+  outline: 0;
+}
+input[type='text'] { font-size: 20px; font-family: monospace; }
+.todo input[type="checkbox"] {
+  transform: scale(1.8) translateY(1px);
+  margin: 0 16px 0 0;
+  cursor: pointer;
+}
+.todo-text input {
+  padding: 4px;
+}
+.todo-text {
+  font-size: 24px;
+  line-height: 24px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+.todo-completed {
+  display: flex;
+  margin: 15px 0;
+}
+.todo-actions {
+  display: flex;
+  justify-content: space-between;
+}
+ */
+
+
+
+.app {
+  background: #209cee;
+  height: 100vh;
+  padding: 30px;
+}
+
+.todo-list {
+  background: #e8e8e8;
+  border-radius: 4px;
+  max-width: 400px;
+  padding: 5px;
+}
+
+.todo {
+  align-items: center;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  padding: 3px 10px;
+  
+}  
+
+.todo-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logout {
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100%
+  );
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+}
+
+
+.logout:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    #222(39, 143, 255) 0%,
+    #222(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
+}
