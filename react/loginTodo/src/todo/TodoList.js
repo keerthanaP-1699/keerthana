@@ -121,11 +121,11 @@ function Todolist() {
         {/* when TodoForm called the text entered is added to the setValues state  */}
         <TodoForm addTodo={addTodo} />
       </div>
-      
+
       {/* AuthButton will check whether a token is stored in localstorage
        if it is true then it will get a logout button 
        when false it shows you where not logged in  */}
-       
+
       <AuthButton />
     </div>
   );
