@@ -1,3 +1,6 @@
+/**
+ * AddEditPartner
+ */
 import { createSlice } from "@reduxjs/toolkit";
 import get from "lodash/get";
 
@@ -11,16 +14,20 @@ const studentSlice = createSlice({
       class:"X-A",
     },
   ]},
+  //reducer with action and state
   reducers: {
+    //add the student
     addUser: (state, action) => {
       state.students = [...state.students, action.payload];
     },
+    //update the studentlist
     editUser: (state, action) => {
       state.students[action.payload.id] = action.payload;
     },
+    //delete the student
     deleteUser: (state, action) => {
       state.students = state.students.filter((val,id) => { 
-        return (get(action.payload,id));
+        return (get(action.payload,id, ""));
       });
     },
   },
