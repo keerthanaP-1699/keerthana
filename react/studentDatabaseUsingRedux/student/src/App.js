@@ -12,11 +12,14 @@ import { deleteUser, editUser } from "./reducer";
 
 const App = ({ studentList }) => {
   const dispatch = useDispatch();
-  const [studentEdit, setStudentEdit] = useState(null);
+  const [indexToEdit, setIndexToEdit] = useState(null);
   const [editingText, setEditingText] = useState("");
   const [checkindex, setCheckIndex] = useState("");
 
-  //should handle delete 
+  const headers = ['checkbox','Rollno','Name','DOB','Class','Action'];
+  const editedValKey=["rollno","name","DOB","class"];
+
+  //should handle delete
   const removeStudent = () => {
     if (window.confirm(`Are you sure you wish to this delete item?`)) {
       dispatch(deleteUser({ ...checkindex }));
@@ -27,7 +30,7 @@ const App = ({ studentList }) => {
   //should handle updates
   const submitEdits = (id) => {
     dispatch(editUser({ ...editingText, id }));
-    setStudentEdit(null);
+    setIndexToEdit(null);
   };
 
   //common input tag for editing
@@ -56,31 +59,23 @@ const App = ({ studentList }) => {
         <table className="student">
           <thead>
             <tr>
-              <td>checkbox</td>
-              <td>rollNo</td>
-              <td>Name</td>
-              <td>DOB</td>
-              <td>Class</td>
-              <td>Action</td>
+              {headers.map((item,index) => (<th key={index}>{item}</th>))}
             </tr>
           </thead>
           {studentList.map((student, index) => (
+            
             <>
-              {index === studentEdit ? (
+              {index === indexToEdit ? (
                 <div>
-                  {getEditInput({ name: "rollno", index: studentEdit })}
-                  {getEditInput({ name: "name", index: studentEdit })}
-                  {getEditInput({ name: "DOB", index: studentEdit })}
-                  {getEditInput({ name: "class", index: studentEdit })}
+                  {getEditInput({ name: "rollno", index: indexToEdit })}
+                  {getEditInput({ name: "name", index: indexToEdit })}
+                  {getEditInput({ name: "DOB", index: indexToEdit })}
+                  {getEditInput({ name: "class", index: indexToEdit })}
                   <button
                     className="output-btn"
-                    onClick={() =>
-                      index === studentEdit
-                        ? submitEdits(index)
-                        : setStudentEdit(index)
-                    }
+                    onClick={() => submitEdits(index)}
                   >
-                    {index === studentEdit ? "submit Edits" : "Edit"}
+                    submit Edits
                   </button>
                 </div>
               ) : (
@@ -91,20 +86,13 @@ const App = ({ studentList }) => {
                     onChange={(e) => setCheckIndex(e.target.value)}
                   />
 
-                  <td>{student.rollno}</td>
-                  <td>{student.name}</td>
-                  <td>{student.DOB}</td>
-                  <td>{student.class}</td>
+                  {editedValKey.map((items, index) => (<td key={index}>{student[items]}</td>))}
 
                   <button
                     className="output-btn"
-                    onClick={() =>
-                      index === studentEdit
-                        ? submitEdits(index)
-                        : setStudentEdit(index)
-                    }
+                    onClick={() => setIndexToEdit(index)}
                   >
-                    {index === studentEdit ? "submit Edits" : "Edit"}
+                    Edit
                   </button>
                 </tr>
               )}
@@ -112,7 +100,7 @@ const App = ({ studentList }) => {
           ))}
         </table>
 
-         <AddStudent />
+        <AddStudent />
         <button className="input-btn" onClick={() => removeStudent()}>
           Delete
         </button>
