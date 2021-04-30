@@ -1,13 +1,13 @@
 /**
  * AddEditPartner
  */
-import PaginatedContent from "./pagination"
+import Pagination from "./Pagination"
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <PaginatedContent />
+      <Pagination />
     </div>
   );
 }

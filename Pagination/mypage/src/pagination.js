@@ -2,12 +2,14 @@
  * AddEditPartner
  */
 import React, { useState } from "react";
-import Pagination from "react-js-pagination";
+import ReactPagination from "react-js-pagination";
 
+//json data for studentList
 import Data from "./MOCK_DATA.json";
 import "./App.css";
 
-const PaginatedContent = () => {
+const Pagination = () => {
+  //key values for print values in tabel
   const header = ["id", "name", "age", "department"];
   const studentListPerPage = 5;
   const [activePage, setCurrentPage] = useState(1);
@@ -20,6 +22,7 @@ const PaginatedContent = () => {
     indexOfLastStudentList
   );
 
+  //renders the studentList for each page
   const renderStudentList = currentStudentList.map((student) => {
     return (
       <tr>
@@ -29,33 +32,39 @@ const PaginatedContent = () => {
       </tr>
     );
   });
+
+  //handle currentpageNumber
   const handlePageChange = (pageNumber) => {
-    console.log(`active page is ${pageNumber}`);
     setCurrentPage(pageNumber);
   };
 
   return (
-    <div>
+    <>
       <div className="App">
         <tabel>
-          {header.map((item, index) => (
-            <th key={index}>{item}</th>
-          ))}
+            {/* show the heading for tabel */}
+          <tr>
+            {header.map((item, index) => (
+              <th key={index}>{item}</th>
+            ))}
+          </tr>
+          {/* rendered studentList */}
           {renderStudentList}
         </tabel>
       </div>
       <div className="pagination">
-        <Pagination
+        
+        <ReactPagination
           activePage={activePage}
           itemsCountPerPage={5}
           totalItemsCount={Data.length}
           pageRangeDisplayed={3}
           hideDisabled
-          onChange={handlePageChange}
+          onChange={() => handlePageChange()}
         />
       </div>
-    </div>
+    </>
   );
 };
 
-export default PaginatedContent;
+export default Pagination;
