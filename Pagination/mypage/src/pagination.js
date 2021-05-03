@@ -35,6 +35,7 @@ const Pagination = () => {
 
   //handle currentpageNumber
   const handlePageChange = (pageNumber) => {
+    console.log(pageNumber);
     setCurrentPage(pageNumber);
   };
 
@@ -42,7 +43,7 @@ const Pagination = () => {
     <>
       <div className="App">
         <tabel>
-            {/* show the heading for tabel */}
+          {/* show the heading for tabel */}
           <tr>
             {header.map((item, index) => (
               <th key={index}>{item}</th>
@@ -60,7 +61,7 @@ const Pagination = () => {
           totalItemsCount={Data.length}
           pageRangeDisplayed={3}
           hideDisabled
-          onChange={() => handlePageChange()}
+          onChange={handlePageChange}
         />
       </div>
     </>
